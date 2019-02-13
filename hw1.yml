@@ -10,7 +10,7 @@
     - name: install apache2
       apt: name=apache2 update_cache=yes state=latest
     - name: clone repo
-      git: repo=https://github.com/ketsai/cloud-computing-instance.git dest=/var/www/html/
+      git: repo=https://github.com/ketsai/cloud-computing-instance.git dest=/var/www/html/hw1/
     - name: move hw0.html file into main directory
       raw: mv /var/www/html/hw1/hw0.html /var/www/html/
     - name: start apache2
