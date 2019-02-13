@@ -3,10 +3,15 @@
   remote_user: ubuntu
   become: yes
   become_method: sudo
+  gather_facts: no
   tasks:
+    - name: install python2
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
     - name: install apache2
       apt: name=apache2 update_cache=yes state=latest
+    - name: clear /var/www/html/ to prepare for clone
+      raw: rm /var/www/html/index.html
     - name: clone hw0 repo
-      git: repo=https://github.com/ketsai/cloud-computing-instance.git dest=/var/www/html/
+      git: repo=https://github.com/ketsai/cloud-computing-instance.git dest=/var/www/html/ force=yes
     - name: start apache2
       service: name=apache2 state=started
