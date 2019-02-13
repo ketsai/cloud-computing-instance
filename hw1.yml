@@ -13,5 +13,7 @@
       git: repo=https://github.com/ketsai/cloud-computing-instance.git dest=/var/www/html/hw1/
     - name: move hw0.html file into main directory
       raw: mv /var/www/html/hw1/hw0.html /var/www/html/
+    - name: move hw1.yml file into main directory
+      raw: mv /var/www/html/hw1/hw1.yml /var/www/html/
     - name: start apache2
       service: name=apache2 state=started
