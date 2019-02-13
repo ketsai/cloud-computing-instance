@@ -3,10 +3,7 @@
   remote_user: ubuntu
   become: yes
   become_method: sudo
-  gather_facts: no
   tasks:
-    - name: install python2
-      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
     - name: install apache2
       apt: name=apache2 update_cache=yes state=latest
     - name: clone hw0 repo
